@@ -89,11 +89,15 @@ export default function DiagnosisPage() {
 
     try {
       const allResponses = getAllResponses();
+      console.log('[Chat] Sending message:', userMessage);
+      console.log('[Chat] Responses available:', Object.keys(allResponses).length);
       const response = await chatWithARC(userMessage, allResponses);
+      console.log('[Chat] Response received:', response.substring(0, 100));
       setChatMessages(prev => [...prev, { role: 'assistant', content: response }]);
     } catch (error) {
-      console.error('Error in chat:', error);
-      setChatMessages(prev => [...prev, { role: 'assistant', content: 'Hubo un error procesando tu pregunta.' }]);
+      const errorMsg = error instanceof Error ? error.message : String(error);
+      console.error('[Chat] Error in chat:', errorMsg);
+      setChatMessages(prev => [...prev, { role: 'assistant', content: `Error: ${errorMsg}` }]);
     } finally {
       setChatLoading(false);
     }
