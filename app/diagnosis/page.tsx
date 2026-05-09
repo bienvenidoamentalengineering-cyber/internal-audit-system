@@ -526,7 +526,9 @@ export default function DiagnosisPage() {
                 Este diagnóstico es el punto de partida. El siguiente paso es transformar esta claridad en acción estructurada.
               </p>
               <a
-                href="https://tally.so/r/ODJ7QA"
+                href="https://wa.me/34603647173?text=Hola+Pedro+acabo+de+terminar+el+journal+de+7+dias+y+quiero+continuar+el+proceso"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={handleRequestSession}
                 style={{
                   backgroundColor: '#3B82F6',
