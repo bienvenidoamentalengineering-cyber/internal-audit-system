@@ -97,7 +97,7 @@ export default function Home() {
               </li>
               <li style={{ display: 'flex', gap: '0.75rem' }}>
                 <span style={{ color: '#3B82F6', fontWeight: 'bold', flexShrink: 0 }}>3.</span>
-                <span>Recibe un diagnóstico clínico y exacto</span>
+                <span>Detecta patrones invisibles en tu estructura actual</span>
               </li>
             </ul>
           </div>
@@ -131,14 +131,14 @@ export default function Home() {
               window.location.href = '/day/1';
             }}
           >
-            Comenzar
+            Iniciar auditoría
           </a>
           <p style={{
             fontSize: '0.875rem',
             color: '#6B7280',
             margin: 0,
           }}>
-            Toma aproximadamente 10-15 minutos por día
+            Un proceso privado de 10–15 minutos al día.
           </p>
         </div>
       </div>
