@@ -520,7 +520,8 @@ export default function DiagnosisPage() {
                 margin: 0,
                 lineHeight: '1.5',
               }}>
-                Este diagnóstico es el punto de partida. El siguiente paso es transformar esta claridad en acción estructurada.
+                La mayoría de personas vuelven a distraerse después de identificar claramente el problema.<br />
+                La claridad solo cambia algo cuando se convierte en estructura.
               </p>
               <a
                 href="https://wa.me/34603647173?text=Hola+Pedro+acabo+de+terminar+el+journal+de+7+dias+y+quiero+continuar+el+proceso"
