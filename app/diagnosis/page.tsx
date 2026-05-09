@@ -60,7 +60,8 @@ export default function DiagnosisPage() {
           }
         }
       } catch (error) {
-        setError("No se pudo generar el diagnóstico. Por favor intenta de nuevo."); console.error("Error generating diagnosis:", error));
+        setError("No se pudo generar el diagnóstico. Por favor intenta de nuevo.");
+        console.error("Error generating diagnosis:", error);
       } finally {
         setGenerating(false);
       }
