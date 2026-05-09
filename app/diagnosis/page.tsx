@@ -548,7 +548,7 @@ export default function DiagnosisPage() {
                 onMouseEnter={(e) => !loading && (e.currentTarget.style.backgroundColor = '#0EA5E9')}
                 onMouseLeave={(e) => !loading && (e.currentTarget.style.backgroundColor = '#3B82F6')}
               >
-                {loading ? 'Redirigiendo...' : 'Solicitar Sesión de Alineación'}
+                {loading ? 'Redirigiendo...' : 'Continuar el proceso'}
               </a>
               <a
                 href="/"
