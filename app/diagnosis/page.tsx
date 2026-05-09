@@ -72,10 +72,7 @@ export default function DiagnosisPage() {
 
   const handleRequestSession = (e: React.MouseEvent) => {
     e.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      window.location.href = 'https://tally.so/r/ODJ7QA';
-    }, 100);
+    // No hacer nada - dejar que el link se abra normalmente con target="_blank"
   };
 
   const handleChatSubmit = async (e: React.FormEvent) => {
