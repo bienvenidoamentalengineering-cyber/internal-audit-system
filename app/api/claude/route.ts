@@ -7,8 +7,10 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(request: NextRequest) {
   try {
     const { context, prompt, systemPrompt, model } = await request.json();
+    console.log('[Claude API] Request received:', { hasContext: !!context, hasPrompt: !!prompt, model });
 
     if (!context || !prompt) {
+      console.error('[Claude API] Missing context or prompt');
       return NextResponse.json(
         { error: 'Missing context or prompt' },
         { status: 400 }
@@ -18,7 +20,7 @@ export async function POST(request: NextRequest) {
     // Obtener API key de variables de entorno
     const apiKey = process.env.ANTHROPIC_API_KEY;
     if (!apiKey) {
-      console.error('ANTHROPIC_API_KEY not configured');
+      console.error('[Claude API] ANTHROPIC_API_KEY not configured');
       return NextResponse.json(
         { error: 'Claude API not configured' },
         { status: 500 }
@@ -26,6 +28,7 @@ export async function POST(request: NextRequest) {
     }
 
     const claudeModel = model || process.env.CLAUDE_MODEL || 'claude-3-5-sonnet-20241022';
+    console.log('[Claude API] Using model:', claudeModel);
 
     // Llamar a Claude API con timeout de 30 segundos
     const controller = new AbortController();
@@ -59,15 +62,17 @@ export async function POST(request: NextRequest) {
 
     if (!response.ok) {
       const error = await response.text();
-      console.error(`Claude API error (${response.status}):`, error);
+      console.error(`[Claude API] Anthropic error (${response.status}):`, error);
       return NextResponse.json(
-        { error: `Claude API error: ${response.statusText}` },
+        { error: `Claude API error (${response.status}): ${error}` },
         { status: response.status }
       );
     }
 
     const data = await response.json();
+    console.log('[Claude API] Response received:', { hasContent: !!data.content, contentLength: data.content?.[0]?.text?.length });
     const result = data.content[0].text;
+    console.log('[Claude API] Returning result, length:', result.length);
 
     return NextResponse.json({ result });
   } catch (error) {
@@ -78,9 +83,11 @@ export async function POST(request: NextRequest) {
         { status: 504 }
       );
     }
-    console.error('Error in Claude endpoint:', error);
+    console.error('[Claude API] Error in Claude endpoint:', error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    console.error('[Claude API] Error details:', errorMsg);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: `Internal server error: ${errorMsg}` },
       { status: 500 }
     );
   }
