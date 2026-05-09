@@ -523,11 +523,12 @@ export default function DiagnosisPage() {
                 La mayoría de personas vuelven a distraerse después de identificar claramente el problema.<br />
                 La claridad solo cambia algo cuando se convierte en estructura.
               </p>
-              <a
-                href="https://wa.me/34603647173?text=Hola+Pedro+acabo+de+terminar+el+journal+de+7+dias+y+quiero+continuar+el+proceso"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={handleRequestSession}
+              <button
+                onClick={() => {
+                  if (!loading) {
+                    window.open('https://wa.me/34603647173?text=Hola+Pedro+acabo+de+terminar+el+journal+de+7+dias+y+quiero+continuar+el+proceso', '_blank');
+                  }
+                }}
                 style={{
                   backgroundColor: '#3B82F6',
                   color: 'white',
@@ -544,12 +545,14 @@ export default function DiagnosisPage() {
                   transition: 'background-color 0.2s',
                   WebkitTouchCallout: 'none',
                   WebkitUserSelect: 'none',
+                  width: '100%',
                 } as React.CSSProperties}
                 onMouseEnter={(e) => !loading && (e.currentTarget.style.backgroundColor = '#0EA5E9')}
                 onMouseLeave={(e) => !loading && (e.currentTarget.style.backgroundColor = '#3B82F6')}
+                disabled={loading}
               >
                 {loading ? 'Redirigiendo...' : 'Continuar el proceso'}
-              </a>
+              </button>
               <a
                 href="/"
                 style={{
