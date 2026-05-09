@@ -133,7 +133,12 @@ Responde máximo 3 líneas. Nunca resuelves — solo profundizas. Haz preguntas 
     }
 
     const data = await response.json();
-    return data.result || 'No se pudo procesar la respuesta.';
+    // El endpoint retorna { result: string }
+    const result = data.result;
+    if (!result) {
+      throw new Error('No response from Claude API');
+    }
+    return result;
   } catch (error) {
     const errorMsg = error instanceof Error ? error.message : 'Unknown error';
     console.error('Error in chat with ARC:', errorMsg);
