@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const claudeModel = model || process.env.CLAUDE_MODEL || 'claude-3-5-sonnet-20241022';
+    const claudeModel = 'claude-3-5-sonnet-20241022';
     console.log('[Claude API] Using model:', claudeModel);
 
     // Llamar a Claude API con timeout de 30 segundos
