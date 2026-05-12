@@ -406,7 +406,7 @@ export default function DiagnosisPage() {
                 fontWeight: 'bold',
                 margin: 0,
               }}>
-                EXPLORAR CON ARC
+                ¿Hay algo en tu diagnóstico que quieras explorar más a fondo?
               </p>
 
               {/* Chat messages */}
@@ -473,7 +473,7 @@ export default function DiagnosisPage() {
                   type="text"
                   value={chatInput}
                   onChange={(e) => setChatInput(e.target.value)}
-                  placeholder="Pregunta a ARC..."
+                  placeholder="Escribe aquí..."
                   disabled={chatLoading}
                   style={{
                     flex: 1,
