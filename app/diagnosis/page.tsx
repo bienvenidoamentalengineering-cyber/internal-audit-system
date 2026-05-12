@@ -408,7 +408,7 @@ export default function DiagnosisPage() {
               </div>
             </div>
 
-            {/* Chat con ARC */}
+            {/* Bloque de cierre */}
             <div style={{
               display: 'flex',
               flexDirection: 'column',
@@ -419,134 +419,34 @@ export default function DiagnosisPage() {
               padding: '1.5rem',
             }}>
               <p style={{
-                fontSize: '0.75rem',
-                letterSpacing: '0.15em',
-                color: '#3B82F6',
-                fontWeight: 'bold',
+                fontSize: '1rem',
+                color: 'white',
+                lineHeight: '1.6',
                 margin: 0,
               }}>
-                ¿Hay algo en tu diagnóstico que quieras explorar más a fondo?
+                Lo que has visto en estos 7 días tiene una raíz concreta. El siguiente paso es una conversación de 90 minutos donde lo trabajamos en profundidad.
               </p>
-
-              {/* Chat messages */}
-              <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '1rem',
-                maxHeight: '300px',
-                overflowY: 'auto',
-                paddingBottom: '1rem',
-              }}>
-                {chatMessages.map((msg, idx) => (
-                  <div
-                    key={idx}
-                    style={{
-                      display: 'flex',
-                      justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start',
-                    }}
-                  >
-                    <div
-                      style={{
-                        maxWidth: '85%',
-                        backgroundColor: msg.role === 'user' ? '#3B82F6' : '#1F2937',
-                        color: 'white',
-                        padding: '0.75rem 1rem',
-                        borderRadius: '0.5rem',
-                        fontSize: '0.9rem',
-                        lineHeight: '1.5',
-                      }}
-                    >
-                      {msg.content}
-                    </div>
-                  </div>
-                ))}
-                {chatLoading && (
-                  <div style={{
-                    display: 'flex',
-                    justifyContent: 'flex-start',
-                  }}>
-                    <div
-                      style={{
-                        backgroundColor: '#1F2937',
-                        color: '#6B7280',
-                        padding: '0.75rem 1rem',
-                        borderRadius: '0.5rem',
-                        fontSize: '0.9rem',
-                      }}
-                    >
-                      ARC está pensando...
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Chat input */}
-              <form
-                onSubmit={handleChatSubmit}
-                style={{
-                  display: 'flex',
-                  gap: '0.5rem',
-                }}
-              >
-                <input
-                  type="text"
-                  value={chatInput}
-                  onChange={(e) => setChatInput(e.target.value)}
-                  placeholder="Escribe aquí..."
-                  disabled={chatLoading}
-                  style={{
-                    flex: 1,
-                    backgroundColor: '#0A0E27',
-                    border: '1px solid #1F2937',
-                    borderRadius: '0.5rem',
-                    padding: '0.75rem',
-                    color: 'white',
-                    fontSize: '0.9rem',
-                    fontFamily: 'inherit',
-                  }}
-                />
-                <button
-                  type="submit"
-                  disabled={chatLoading || !chatInput.trim()}
-                  style={{
-                    backgroundColor: '#3B82F6',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '0.5rem',
-                    padding: '0.75rem 1rem',
-                    cursor: chatLoading ? 'not-allowed' : 'pointer',
-                    fontSize: '0.9rem',
-                    fontWeight: '600',
-                    opacity: chatLoading || !chatInput.trim() ? 0.5 : 1,
-                  }}
-                >
-                  Enviar
-                </button>
-              </form>
               
-              {showClosingButton && (
-                <button
-                  onClick={() => {
-                    window.open('https://wa.me/34603647173?text=Hola+Pedro+acabo+de+terminar+el+journal+de+7+dias+y+quiero+continuar+el+proceso', '_blank');
-                  }}
-                  style={{
-                    backgroundColor: '#3B82F6',
-                    color: 'white',
-                    fontWeight: '600',
-                    padding: '0.75rem 1rem',
-                    borderRadius: '0.5rem',
-                    border: 'none',
-                    cursor: 'pointer',
-                    fontSize: '0.9rem',
-                    width: '100%',
-                    marginTop: '0.5rem',
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#0EA5E9')}
-                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#3B82F6')}
-                >
-                  → Hablar con Pedro
-                </button>
-              )}
+              <button
+                onClick={() => {
+                  window.open('https://wa.me/34603647173?text=Hola+Pedro+acabo+de+terminar+el+journal+de+7+dias+y+quiero+continuar+el+proceso', '_blank');
+                }}
+                style={{
+                  backgroundColor: '#3B82F6',
+                  color: 'white',
+                  fontWeight: '600',
+                  padding: '0.75rem 1rem',
+                  borderRadius: '0.5rem',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontSize: '0.9rem',
+                  width: '100%',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#0EA5E9')}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#3B82F6')}
+              >
+                Hablar con Pedro
+              </button>
             </div>
 
             {/* CTA */}
