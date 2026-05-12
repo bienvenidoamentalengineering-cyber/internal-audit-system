@@ -37,6 +37,7 @@ export default function DiagnosisPage() {
   const [chatInput, setChatInput] = useState('');
   const [chatLoading, setChatLoading] = useState(false);
   const [showClosingButton, setShowClosingButton] = useState(false);
+  const [closingMessageSent, setClosingMessageSent] = useState(false);
 
   useEffect(() => {
     const generateDiagnosisFromResponses = async () => {
@@ -96,7 +97,18 @@ export default function DiagnosisPage() {
       // Detectar si es el mensaje de cierre
       if (response.includes('Lo que describes tiene una raiz concreta') || 
           response.includes('Quieres verlo')) {
-        setShowClosingButton(true);
+        setClosingMessageSent(true);
+      }
+      
+      // Si ya enviamos el mensaje de cierre, detectar respuesta afirmativa
+      if (closingMessageSent) {
+        const affirmativeKeywords = ['sí', 'si', 'quiero', 'claro', 'adelante', 'yes', 'yeah', 'ok', 'vale', 'vamos'];
+        const isAffirmative = affirmativeKeywords.some(keyword => userMessage.toLowerCase().includes(keyword));
+        if (isAffirmative) {
+          setShowClosingButton(true);
+          // No hacer más preguntas - solo mostrar el botón
+          return;
+        }
       }
     } catch (error) {
       const errorMsg = error instanceof Error ? error.message : String(error);
