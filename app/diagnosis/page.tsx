@@ -456,46 +456,6 @@ export default function DiagnosisPage() {
               gap: '1rem',
               paddingTop: '1rem',
             }}>
-              <p style={{
-                fontSize: '0.875rem',
-                color: '#9CA3AF',
-                textAlign: 'center',
-                margin: 0,
-                lineHeight: '1.5',
-              }}>
-                La mayoría de personas vuelven a distraerse después de identificar claramente el problema.<br />
-                La claridad solo cambia algo cuando se convierte en estructura.
-              </p>
-              <button
-                onClick={() => {
-                  if (!loading) {
-                    window.open('https://wa.me/34603647173?text=Hola+Pedro+acabo+de+terminar+el+journal+de+7+dias+y+quiero+continuar+el+proceso', '_blank');
-                  }
-                }}
-                style={{
-                  backgroundColor: '#3B82F6',
-                  color: 'white',
-                  fontWeight: '600',
-                  padding: '1rem 1.5rem',
-                  borderRadius: '0.5rem',
-                  border: 'none',
-                  cursor: loading ? 'not-allowed' : 'pointer',
-                  fontSize: '1rem',
-                  opacity: loading ? 0.5 : 1,
-                  textDecoration: 'none',
-                  display: 'block',
-                  textAlign: 'center',
-                  transition: 'background-color 0.2s',
-                  WebkitTouchCallout: 'none',
-                  WebkitUserSelect: 'none',
-                  width: '100%',
-                } as React.CSSProperties}
-                onMouseEnter={(e) => !loading && (e.currentTarget.style.backgroundColor = '#0EA5E9')}
-                onMouseLeave={(e) => !loading && (e.currentTarget.style.backgroundColor = '#3B82F6')}
-                disabled={loading}
-              >
-                {loading ? 'Redirigiendo...' : 'Continuar el proceso'}
-              </button>
               <a
                 href="/"
                 style={{
