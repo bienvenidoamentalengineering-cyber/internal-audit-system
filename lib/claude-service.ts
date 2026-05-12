@@ -70,7 +70,7 @@ export async function generateDiagnosis(
           context,
           systemPrompt: ARC_SYSTEM_PROMPT,
           prompt: DIAGNOSIS_PROMPT,
-          model: 'claude-3-5-sonnet-20241022',
+          model: 'claude-opus-4-1-20250805',
         }),
         signal: controller.signal,
       });
@@ -119,7 +119,7 @@ export async function chatWithARC(
           prompt: `El usuario pregunta: "${userMessage}"
 
 Responde máximo 3 líneas. Nunca resuelves — solo profundizas. Haz preguntas o señala contradicciones.`,
-          model: 'claude-3-5-sonnet-20241022',
+          model: 'claude-opus-4-1-20250805',
         }),
         signal: controller.signal,
       });
