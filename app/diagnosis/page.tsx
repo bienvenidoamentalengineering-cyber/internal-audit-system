@@ -36,6 +36,7 @@ export default function DiagnosisPage() {
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
   const [chatInput, setChatInput] = useState('');
   const [chatLoading, setChatLoading] = useState(false);
+  const [showClosingButton, setShowClosingButton] = useState(false);
 
   useEffect(() => {
     const generateDiagnosisFromResponses = async () => {
@@ -91,6 +92,12 @@ export default function DiagnosisPage() {
       const response = await chatWithARC(userMessage, allResponses);
       console.log('[Chat] Response received:', response.substring(0, 100));
       setChatMessages(prev => [...prev, { role: 'assistant', content: response }]);
+      
+      // Detectar si es el mensaje de cierre
+      if (response.includes('Lo que describes tiene una raiz concreta') || 
+          response.includes('Quieres verlo')) {
+        setShowClosingButton(true);
+      }
     } catch (error) {
       const errorMsg = error instanceof Error ? error.message : String(error);
       console.error('[Chat] Error in chat:', errorMsg);
@@ -504,6 +511,30 @@ export default function DiagnosisPage() {
                   Enviar
                 </button>
               </form>
+              
+              {showClosingButton && (
+                <button
+                  onClick={() => {
+                    window.open('https://wa.me/34603647173?text=Hola+Pedro+acabo+de+terminar+el+journal+de+7+dias+y+quiero+continuar+el+proceso', '_blank');
+                  }}
+                  style={{
+                    backgroundColor: '#3B82F6',
+                    color: 'white',
+                    fontWeight: '600',
+                    padding: '0.75rem 1rem',
+                    borderRadius: '0.5rem',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontSize: '0.9rem',
+                    width: '100%',
+                    marginTop: '0.5rem',
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#0EA5E9')}
+                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#3B82F6')}
+                >
+                  → Hablar con Pedro
+                </button>
+              )}
             </div>
 
             {/* CTA */}
