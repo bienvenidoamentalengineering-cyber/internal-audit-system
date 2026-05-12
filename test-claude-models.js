@@ -3,7 +3,7 @@
 const apiKey = process.env.ANTHROPIC_API_KEY;
 
 const models = [
-  'claude-3-5-sonnet-20241022',
+  'claude-opus-4-1-20250805',
   'claude-3-opus-20250219',
   'claude-3-sonnet-20250229',
   'claude-opus-4-1-20250805',
